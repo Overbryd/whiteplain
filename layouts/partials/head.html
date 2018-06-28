@@ -16,8 +16,10 @@
   <meta name="twitter:description" content="{{ . | truncate 200 }}">
   {{- end }}
   <meta name="author" content="{{ .Site.Params.author.name }}"/>
-  {{- with .Site.Params.favicon }}
-  <link rel='icon' type='image/x-icon' href="{{ . | relURL }}" />
+  {{- if .Site.Params.favicon }}
+  <link rel='icon' type='image/x-icon' href="{{ .Site.Params.favicon | relURL }}" />
+  {{- else if .Site.Params.author.gravatar }}
+  <link rel='shortcut icon' href="https://secure.gravatar.com/avatar/{{ .Site.Params.author.gravatar }}.jpg?s=16" />
   {{- end }}
   <meta property="og:site_name" content="{{ .Site.Title }}" />
   <meta property="og:url" content="{{ .URL | relURL }}" />
