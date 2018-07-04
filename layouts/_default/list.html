@@ -11,7 +11,7 @@
   {{- end }}
   <div class="main" role="main">
     <section class="list {{ .Kind }}-list">
-      {{- $paginator := .Paginator }}
+      {{- $paginator := .Paginate (where .Data.Pages "Params.unlist" "!=" "true") }}
       {{- range $paginator.Pages }}
       <article class="article">
         <a href="{{ .Permalink | relURL }}" class="article-titles">
